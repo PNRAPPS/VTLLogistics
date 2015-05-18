@@ -1,0 +1,46 @@
+﻿@model Vital.Model.ShipmentModel
+
+@{
+    ViewBag.Title = "ShipmenResult";
+}
+
+<div class="panel" style="background: #ffffff; border: #ffffff; margin-top: 0px; margin-bottom: 10px; padding-bottom: 0px;">
+    <div class="row">
+        <h4>Shipment Result</h4>
+
+        @if (@Model.IsSuccess)
+        {
+
+            @Html.Raw(Model.Result);
+
+            <input type="button" class="button" value="Print Label" onclick="openTab('@Model.ShipmentIdentificationNumber')" style="margin-right:15px;" />
+            <input type="button" class="button" value="Create New Shipment" onclick="window.location='Create'" style="margin-right:15px;" />
+            <input type="button" class="button" value="Go to Shipment History" onclick="window.location='../Shipment'" />
+            <!--<a href="@Url.Content("~/Shipment")" class="button">Go to Shipment List</a> !-->
+        }
+        <br />
+        <img src="@Model.LabelGenerate" alt="receipt" style="display:none;">
+        <br />
+        <br />
+        <br />
+
+
+
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+<script type="text/javascript">
+
+    function openTab(data) {
+        //window.open("data:application/png;base64, " + data);
+        window.open('../Shipment/Label/?t=' + data + '');
+    }
+
+</script>
